@@ -1,14 +1,17 @@
 package tictactoe;
 
 public class Pawn {
-    private String type;
-    private int pos;
+    private char pawn;
 
-    public Pawn(String type){
-        this.type = type;
+    public Pawn(char c){
+        setPawn(c);
     }
 
-    public int getPos() {
-        return this.pos;
+    public char getPawn() {
+        return this.pawn;
     }
-}
+
+    public void setPawn(char pawn) {
+        this.pawn = pawn;
+    } 
+}   

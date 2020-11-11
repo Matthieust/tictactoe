@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Grid {
+    char[][] gameZone = new char[3][3];
     String horziTok;
     String vertiTok;
     List<String> grid = new ArrayList<>();
