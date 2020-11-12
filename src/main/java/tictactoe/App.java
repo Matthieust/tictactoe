@@ -38,7 +38,7 @@ public final class App {
                     return false;
                 }
             case 4:
-               if ((grid.gameZone[1][1] == c && grid.gameZone[1][2] == c) ||
+                if ((grid.gameZone[1][1] == c && grid.gameZone[1][2] == c) ||
                     (grid.gameZone[0][0] == c && grid.gameZone[2][0] == c)
                 ){
                     return true;
@@ -170,7 +170,6 @@ public final class App {
                 return false;
         }
     }
-
     static void fillBoard(int pos, char pawn, Grid grid){
         //TODO : change this line pos / 3 col pos % 3, check 3 6 9 special case 
         switch (pos) {
