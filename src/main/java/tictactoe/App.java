@@ -100,6 +100,77 @@ public final class App {
             }
     }
 
+    static boolean checkPos(int pos, char pawn1, char pawn2, Grid grid){
+        //TODO : change this line pos / 3 col pos % 3, check 3 6 9 special case 
+        switch (pos) {
+            case 1:
+                if (grid.gameZone[0][0] != pawn1 && grid.gameZone[0][0] != pawn2){
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            case 2:
+                if (grid.gameZone[0][1] != pawn1 && grid.gameZone[0][1] != pawn2){
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            case 3:
+                if (grid.gameZone[0][2] != pawn1 && grid.gameZone[0][2] != pawn2){
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            case 4:
+                if (grid.gameZone[1][0] != pawn1 && grid.gameZone[1][0] != pawn2){
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            case 5:
+                if (grid.gameZone[1][1] != pawn1 && grid.gameZone[1][1] != pawn2){
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            case 6:
+                if (grid.gameZone[1][2] != pawn1 && grid.gameZone[1][2] != pawn2){
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            case 7:
+                if (grid.gameZone[2][0] != pawn1 && grid.gameZone[2][0] != pawn2){
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            case 8:
+                if (grid.gameZone[2][1] != pawn1 && grid.gameZone[2][1] != pawn2){
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            case 9:
+                if (grid.gameZone[2][2] != pawn1 && grid.gameZone[2][2] != pawn2){
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            default:
+                return false;
+        }
+    }
+
     static void fillBoard(int pos, char pawn, Grid grid){
         //TODO : change this line pos / 3 col pos % 3, check 3 6 9 special case 
         switch (pos) {
@@ -137,13 +208,19 @@ public final class App {
         boolean turn = true;
         boolean win = false;
         Scanner scan = new Scanner(System.in);
-        int pos;
-
+        int pos = 0;
+        
         while (!win){
+            boolean posOk = false;
             if (turn) {
                 //player1 play
-                System.out.printf("%s Where place you pawn ?", player1.getName());
-                pos = scan.nextInt();
+                while (!posOk){
+                    System.out.printf("%s Where place you pawn ?", player1.getName());
+                    pos = scan.nextInt();
+                    if ((pos >= 1 && pos <= 9) && checkPos(pos, player2.pawn.getPawn(), player1.pawn.getPawn(), grid)){
+                        posOk = true;
+                    }
+                }
                 fillBoard(pos, player1.pawn.getPawn(), grid);
                 turn = false;
                 //check win
@@ -151,9 +228,13 @@ public final class App {
             }
             else {
                 //player2 play
-                //player1 play
-                System.out.printf("%s Where place you pawn ?", player2.getName());
-                pos = scan.nextInt();
+                while (!posOk){
+                    System.out.printf("%s Where place you pawn ?", player2.getName());
+                    pos = scan.nextInt();
+                    if ((pos >= 1 && pos <= 9) && checkPos(pos, player2.pawn.getPawn(), player1.pawn.getPawn(), grid)){
+                        posOk = true;
+                    }
+                }
                 fillBoard(pos, player2.pawn.getPawn(), grid);
                 turn = true;
                 //check win
@@ -166,11 +247,12 @@ public final class App {
         Grid grid = new Grid();
         grid.createGrid();
         
-        //create setPlayers
+        //TODO : create setPlayers
         Player player1 = new Player("player1", 'X');
         Player player2 = new Player("player2", 'O');
 
         game(player1, player2, grid);
-        // grid.displayGrid();
+        //grid.displayGrid();
     }
 }
+// display board
