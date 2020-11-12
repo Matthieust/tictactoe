@@ -1,6 +1,7 @@
 #
 # Standard Maven .gitignore
 #
+
 target/
 pom.xml.tag
 pom.xml.releaseBackup
@@ -26,3 +27,7 @@ buildNumber.properties
 .factorypath
 .project
 .vscode/
+.editorconfig
+.gitattributes
+.travis.yml
+pom.xml
